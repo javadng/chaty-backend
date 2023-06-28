@@ -1,5 +1,5 @@
 module.exports = {
-  crosOrigin: "http://localhost:3000",
+  crosOrigin: "https://chaty-app-javad.netlify.app",
   port: 3001,
-  host: "localhost",
+  host: "chaty-app-javad.netlify.app",
 };
