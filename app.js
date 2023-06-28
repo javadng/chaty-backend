@@ -20,9 +20,9 @@ app.use(cookieParser());
 
 app.get("/api", (_, res) => res.send(`Server is running.`));
 
-httpServer.listen(config.port, config.host, () => {
+httpServer.listen(config.port, () => {
   console.log(`server is runnig 🚀 on port: ${config.port}`);
-  console.log(`> http://${config.host}:${config.port}`);
+  console.log(`> https://${config.host}:${config.port}`);
 
   connectToDB().catch((err) => console.log(`error: ${err}`));
 
