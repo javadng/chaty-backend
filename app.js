@@ -27,8 +27,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// app.use(express.json({ limit: "10kb" }));
-app.use(bodyParser.json({ limit: "10kb" }));
+app.use(express.json({ limit: "10kb" }));
+// app.use(bodyParser.json({ limit: "10kb" }));
 app.use(cookieParser());
 
 app.get("/api/v1", (_, res) => res.send(`Server is running.`));
