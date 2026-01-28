@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 
 const socket = (io) => {
   io.on(EVENTS.connection, (socket) => {
-    console.log("new connection " + Math.random());
+    console.log("new connection " + socket.id);
 
     authSocket(io, socket);
     roomsController(io, socket);

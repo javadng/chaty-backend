@@ -19,12 +19,10 @@ module.exports = (io, socket) => {
     socket.emit(EVENTS.SERVER.JOINED_ROOM, { roomId, roomName });
   };
 
-  const joinPrivateChat = (roomName) => {
-    console.log(roomName);
-    console.log(rooms);
-    // socket.join(roomId);
+  const joinPrivateChat = (roomId) => {
+    socket.join(roomId);
 
-    // socket.emit(EVENTS.SERVER.JOINED_ROOM, { roomId });
+    socket.emit(EVENTS.SERVER.JOINED_ROOM, { roomId });
   };
 
   socket.on(EVENTS.CLIENT.CEREATE_PRIVATE_CHAT, createPrivateRoom);

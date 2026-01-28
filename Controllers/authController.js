@@ -1,6 +1,6 @@
 const User = require("../Models/user-model");
 const jwt = require("jsonwebtoken");
-const { parse, serialize } = require("cookie");
+const cookie = require("cookie");
 const Cookies = require("cookies");
 
 const EVENTS = require("../utils/events");
@@ -50,9 +50,19 @@ const setCookie = (req, res, next) => {
   if (process.env.NODE_ENV === "production") cookieOption.secure = true;
   // cookies.set("jwt", req.body.token, cookieOption);
 
-  res.cookie("jwt", req.body.token, cookieOption);
+  res.setHeader(
+    "Set-Cookie",
+    cookie.serialize("myCookie", "cookieValue", {
+      httpOnly: true,
+      maxAge: 86400,
+      sameSite: true, // Cookie expiration time in seconds
+      path: "/", // Cookie path
+    })
+  );
 
-  res.status(200).json({ message: "Cookie has been set." });
+  // res.cookie("jwt", req.body.token, cookieOption);
+
+  res.json({ message: "Cookie has been set." });
 };
 
 // socket auth
@@ -96,7 +106,7 @@ const authSocket = (io, socket) => {
   };
 
   const sendBackJWT = () => {
-    const cookies = parse(socket.handshake.headers.cookie);
+    const cookies = cookie.parse(socket.handshake.headers.cookie);
     const decodedCookie = jwt.decode(cookies.jwt);
 
     socket.emit(EVENTS.SERVER.AUTH.SENDBACK_JWT_COOKIE, decodedCookie);
