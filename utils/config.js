@@ -1,7 +1,7 @@
 module.exports = {
   // corsOrigin: "https://chaty-app-javad.netlify.app",
-  corsOrigin: "http://localhost:3000",
+  corsOrigin: "https://chaty-server-sandy.vercel.app:3001",
   port: 3001,
-  // host: "chat-backend.iran.liara.run",
-  host: "localhost",
+  host: "https://chaty-server-sandy.vercel.app",
+  // host: "localhost",
 };
