@@ -14,7 +14,7 @@ const bodyParser = require("body-parser");
 
 const io = new Server(httpServer, {
   cors: {
-    origin: config.corsOrigin,
+    origin: [config.corsOriginLocal, config.corsOriginOnline],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   },
