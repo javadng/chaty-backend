@@ -20,8 +20,21 @@ const io = new Server(httpServer, {
   },
 });
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://chaty-backend.vercel.app",
+];
+
 const corsOptions = {
-  origin: [config.corsOriginLocal, config.corsOriginOnline],
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // SSR / Postman
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error("Not allowed by CORS"));
+  },
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
