@@ -14,14 +14,14 @@ const bodyParser = require("body-parser");
 
 const io = new Server(httpServer, {
   cors: {
-    origin: "chaty-backend.vercel.app",
+    origin: [config.corsOriginLocal, config.corsOriginOnline],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   },
 });
 
 const corsOptions = {
-  origin: "chaty-backend.vercel.app",
+  origin: [config.corsOriginLocal, config.corsOriginOnline],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
