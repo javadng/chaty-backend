@@ -1,7 +1,7 @@
 module.exports = {
-  corsOrigin: "http://localhost",
-  // corsOrigin: "https://chaty-server-sandy.vercel.app:3001",
+  // corsOrigin: "http://localhost:3000",
+  corsOrigin: "https://chaty-front-web.vercel.app",
   port: 3001,
-  // host: "https://chaty-server-sandy.vercel.app/",
-  host: "localhost",
+  host: "https://chaty-server-sandy.vercel.app/",
+  // host: "localhost",
 };
