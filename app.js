@@ -21,7 +21,7 @@ const io = new Server(httpServer, {
 });
 
 const corsOptions = {
-  origin: config.corsOrigin,
+  origin: [config.corsOriginLocal, config.corsOriginOnline],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
